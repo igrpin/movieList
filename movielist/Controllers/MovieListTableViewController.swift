@@ -9,14 +9,20 @@ import UIKit
 
 class MovieListTableViewController: UITableViewController {
 
-    
+    var movies = [Movie]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadMovies()
     }
     
-    var movies = [Movie]()
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextScreen = segue.destination as! MovieViewController
+        let movie = movies[tableView.indexPathForSelectedRow!.row]
+        nextScreen.movie = movie
+    }
+    
     
     func loadMovies() {
         let urlPrincipal = "https://api.themoviedb.org/3/movie/now_playing?api_key=f321a808e68611f41312aa8408531476"
@@ -25,7 +31,6 @@ class MovieListTableViewController: UITableViewController {
             let JSONdata = try? Data(contentsOf: url) else { return }
             if let data = try? JSONDecoder().decode(results.self, from: JSONdata) {
                 self.movies = data.movies
-                print(self.movies)
                 self.tableView.reloadData()
             } else {
               print("Algo deu errado")
@@ -53,7 +58,6 @@ class MovieListTableViewController: UITableViewController {
         let movie = movies[indexPath.row]
         cell.textLabel?.text = "\(movie.title)"
         cell.detailTextLabel?.text = "Data de lançamento: \(movie.releaseDate)"
-        // cell.imageView
         return cell
     }
 
