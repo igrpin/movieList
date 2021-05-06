@@ -53,11 +53,9 @@ class MovieListTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieTableViewCell
         let movie = movies[indexPath.row]
-        cell.textLabel?.text = "\(movie.title)"
-        cell.detailTextLabel?.text = "Data de lançamento: \(movie.releaseDate)"
+        cell.fillCell(movie)
         return cell
     }
 

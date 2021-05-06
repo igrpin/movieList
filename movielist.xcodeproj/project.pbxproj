@@ -19,6 +19,7 @@
 		143121FF264204D900F86A9C /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143121FE264204D900F86A9C /* MovieViewController.swift */; };
 		1431220126420CDA00F86A9C /* results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1431220026420CD900F86A9C /* results.swift */; };
 		14908810264226DA00D34C28 /* MovieListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1490880F264226DA00D34C28 /* MovieListTableViewController.swift */; };
+		14DAB393264435E9001AE691 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DAB392264435E9001AE691 /* MovieTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		143121FE264204D900F86A9C /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		1431220026420CD900F86A9C /* results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = results.swift; sourceTree = "<group>"; };
 		1490880F264226DA00D34C28 /* MovieListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewController.swift; sourceTree = "<group>"; };
+		14DAB392264435E9001AE691 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			children = (
 				143121FE264204D900F86A9C /* MovieViewController.swift */,
 				1490880F264226DA00D34C28 /* MovieListTableViewController.swift */,
+				14DAB392264435E9001AE691 /* MovieTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				143121C72641F62C00F86A9C /* AppDelegate.swift in Sources */,
 				143121C92641F62C00F86A9C /* SceneDelegate.swift in Sources */,
 				143121FC2641FF8D00F86A9C /* Movie.swift in Sources */,
+				14DAB393264435E9001AE691 /* MovieTableViewCell.swift in Sources */,
 				143121FF264204D900F86A9C /* MovieViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
