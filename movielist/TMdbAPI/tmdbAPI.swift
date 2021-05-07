@@ -43,17 +43,4 @@ class TmdbAPI {
         }
     }
 
-//    static func getPosterImage(posterPath url: String, completion: @escaping (_ imageView: UIImageView) -> ()) {
-//        let baseURL = "https://image.tmdb.org/t/p/original"
-//        print(url)
-//        let url = URL(string: baseURL+url)
-//
-//        DispatchQueue.global().async {
-//            let data = try? Data(contentsOf: url!)
-//            DispatchQueue.main.async {
-//                iv.image = UIImage(data: data!)
-//            }
-//        }
-//    }
-
 }
