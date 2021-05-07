@@ -15,7 +15,7 @@ class TmdbAPI {
     
 
     static func loadMovies(_ completion: @escaping (_ movies: [Movie]) -> ()) {
-        let urlPrincipal = "https://api.themoviedb.org/3/movie/now_playing?api_key=" + apiKey
+        let urlPrincipal = "https://api.themoviedb.org/3/movie/now_playing?api_key=" + self.apiKey
         print(urlPrincipal)
         DispatchQueue.main.async {
             guard let url = URL(string: urlPrincipal),
@@ -30,7 +30,7 @@ class TmdbAPI {
     }
 
     static func loadGenresIds(_ completion: @escaping (_ genres: [Genre]) -> ()) {
-        let urlPrincipal = "https://api.themoviedb.org/3/genre/movie/list?api_key=" + apiKey
+        let urlPrincipal = "https://api.themoviedb.org/3/genre/movie/list?api_key=" + self.apiKey
         DispatchQueue.main.async {
             guard let url = URL(string: urlPrincipal),
                   let JSONdata = try? Data(contentsOf: url) else { return }
@@ -45,4 +45,19 @@ class TmdbAPI {
             }
         }
     }
+
+
+//    static func getPosterImage(posterPath url: String, completion: @escaping (_ imageView: UIImageView) -> ()) {
+//        let baseURL = "https://image.tmdb.org/t/p/original"
+//        print(url)
+//        let url = URL(string: baseURL+url)
+//
+//        DispatchQueue.global().async {
+//            let data = try? Data(contentsOf: url!)
+//            DispatchQueue.main.async {
+//                iv.image = UIImage(data: data!)
+//            }
+//        }
+//    }
+
 }
