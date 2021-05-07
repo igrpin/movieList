@@ -49,4 +49,34 @@ class TmdbAPI {
             }
             dataTask.resume()
         }
+    
+
+    func loadMovies() {
+        let urlPrincipal = "https://api.themoviedb.org/3/movie/now_playing?api_key=f321a808e68611f41312aa8408531476"
+        DispatchQueue.main.async {
+            guard let url = URL(string: urlPrincipal),
+                  let JSONdata = try? Data(contentsOf: url) else { return }
+            if let data = try? JSONDecoder().decode(results.self, from: JSONdata) {
+//                self.movies = data.movies
+//                self.tableView.reloadData()
+            } else {
+                print("Algo deu errado")
+            }
+        }
     }
+
+    func loadGenresIds() {
+        let urlPrincipal = "https://api.themoviedb.org/3/genre/movie/list?api_key=f321a808e68611f41312aa8408531476&language=pt-BR"
+        DispatchQueue.main.async { [self] in
+            guard let url = URL(string: urlPrincipal),
+                  let JSONdata = try? Data(contentsOf: url) else { return }
+            if let data = try? JSONDecoder().decode(genreArray.self, from: JSONdata) {
+                //self.genre = data.genres
+                //self.getGenre(self.genre, self.movies[0].genreIDS)
+                //self.tableView.reloadData()
+            } else {
+                print("Erro inesperado")
+            }
+        }
+    }
+}

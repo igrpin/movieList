@@ -29,7 +29,7 @@ class MovieViewController: UIViewController {
     
     func changeOutlets () {
         lbMovieTitle.text = movie.title
-        lbReleaseDate.text = movie.releaseDate
+        lbReleaseDate.text = DateConfig().dateFormat(date: movie.releaseDate)
         tvOverview.text = movie.overview
         lbLanguage.text = movie.originalLanguage
         self.getPosterImage(posterPath: movie.posterPath, imageView: ivPoster)
@@ -52,9 +52,6 @@ class MovieViewController: UIViewController {
             }
         }
     }
-    
-
-    
     
 //    var movies = [Movie]()
 //

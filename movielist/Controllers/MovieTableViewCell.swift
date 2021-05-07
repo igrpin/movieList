@@ -28,9 +28,35 @@ class MovieTableViewCell: UITableViewCell {
     
     func fillCell(_ movie: Movie, _ genre: String) {
         lbMovieTitle.text = movie.title
-        lbReleaseDate.text = movie.releaseDate
+        lbReleaseDate.text = DateConfig().dateFormat(date: movie.releaseDate)
         lbGender.text = genre
+        self.getPosterImage(posterPath: movie.posterPath, imageView: ivPoster)
+        
+        
     }
     
+    func getPosterImage(posterPath url: String, imageView iv: UIImageView) {
+        let baseURL = "https://image.tmdb.org/t/p/original"
+        print(url)
+        let url = URL(string: baseURL+url)
+
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!)
+            DispatchQueue.main.async {
+                iv.image = UIImage(data: data!)
+            }
+        }
+    }
+    
+//    func dateFormat(date: String) -> String {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        let dateFormatted = dateFormatter.date(from: date )
+//        let datePrint = DateFormatter()
+//        datePrint.dateFormat = "dd.MM.yyyy"
+//        
+//        return datePrint.string(from: dateFormatted!)
+//    }
+//    
     
 }

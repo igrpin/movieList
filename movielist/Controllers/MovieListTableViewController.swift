@@ -11,11 +11,17 @@ class MovieListTableViewController: UITableViewController {
 
     var movies = [Movie]()
     var genre = [Genre]()
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadMovies()
         loadGenresIds()
+        
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
+        searchController.searchBar.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,4 +146,20 @@ class MovieListTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension MovieListTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        loadMovies()
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        loadMovies()
+        tableView.reloadData()
+    }
 }
