@@ -37,7 +37,6 @@ class MovieTableViewCell: UITableViewCell {
     
     func getPosterImage(posterPath url: String, imageView iv: UIImageView) {
         let baseURL = "https://image.tmdb.org/t/p/original"
-        print(url)
         let url = URL(string: baseURL+url)
 
         DispatchQueue.global().async {
