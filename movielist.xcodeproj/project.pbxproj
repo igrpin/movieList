@@ -116,9 +116,9 @@
 				143121FA2641FF7700F86A9C /* Models */,
 				143121F72641F93400F86A9C /* Views */,
 				143121FD264204AD00F86A9C /* Controllers */,
+				14E642B12645741D00FF37C3 /* TMdbAPI */,
 				143121CF2641F62F00F86A9C /* Assets.xcassets */,
 				143121D42641F62F00F86A9C /* Info.plist */,
-				143121F82641F9F300F86A9C /* tmdbAPI.swift */,
 				143121C62641F62C00F86A9C /* AppDelegate.swift */,
 				143121C82641F62C00F86A9C /* SceneDelegate.swift */,
 			);
@@ -171,6 +171,14 @@
 				14DAB392264435E9001AE691 /* MovieTableViewCell.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		14E642B12645741D00FF37C3 /* TMdbAPI */ = {
+			isa = PBXGroup;
+			children = (
+				143121F82641F9F300F86A9C /* tmdbAPI.swift */,
+			);
+			path = TMdbAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

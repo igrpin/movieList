@@ -15,8 +15,8 @@ class MovieListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadMovies()
-        loadGenresIds()
+       // loadMovies()
+//        loadGenresIds()
         
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
@@ -25,7 +25,15 @@ class MovieListTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       
+        TmdbAPI.loadMovies { (movies) in
+            self.movies = movies
+            self.tableView.reloadData()
+        }
+        
+        TmdbAPI.loadGenresIds { (genres) in
+            self.genre = genres
+            self.tableView.reloadData()
+        }
     }
     
     
@@ -39,34 +47,34 @@ class MovieListTableViewController: UITableViewController {
     }
     
     
-    func loadMovies() {
-        let urlPrincipal = "https://api.themoviedb.org/3/movie/now_playing?api_key=f321a808e68611f41312aa8408531476"
-        DispatchQueue.main.async {
-            guard let url = URL(string: urlPrincipal),
-            let JSONdata = try? Data(contentsOf: url) else { return }
-            if let data = try? JSONDecoder().decode(results.self, from: JSONdata) {
-                self.movies = data.movies
-                self.tableView.reloadData()
-            } else {
-              print("Algo deu errado")
-            }
-          }
-    }
+//    func loadMovies() {
+//        let urlPrincipal = "https://api.themoviedb.org/3/movie/now_playing?api_key=f321a808e68611f41312aa8408531476"
+//        DispatchQueue.main.async {
+//            guard let url = URL(string: urlPrincipal),
+//            let JSONdata = try? Data(contentsOf: url) else { return }
+//            if let data = try? JSONDecoder().decode(results.self, from: JSONdata) {
+//                self.movies = data.movies
+//                self.tableView.reloadData()
+//            } else {
+//              print("Algo deu errado")
+//            }
+//          }
+//    }
     
-    func loadGenresIds() {
-        let urlPrincipal = "https://api.themoviedb.org/3/genre/movie/list?api_key=f321a808e68611f41312aa8408531476&language=pt-BR"
-        DispatchQueue.main.async { [self] in
-            guard let url = URL(string: urlPrincipal),
-            let JSONdata = try? Data(contentsOf: url) else { return }
-            if let data = try? JSONDecoder().decode(genreArray.self, from: JSONdata) {
-                self.genre = data.genres
-                //self.getGenre(self.genre, self.movies[0].genreIDS)
-                self.tableView.reloadData()
-            } else {
-              print("Erro inesperado")
-            }
-          }
-    }
+//    func loadGenresIds() {
+//        let urlPrincipal = "https://api.themoviedb.org/3/genre/movie/list?api_key=f321a808e68611f41312aa8408531476&language=pt-BR"
+//        DispatchQueue.main.async { [self] in
+//            guard let url = URL(string: urlPrincipal),
+//            let JSONdata = try? Data(contentsOf: url) else { return }
+//            if let data = try? JSONDecoder().decode(genreArray.self, from: JSONdata) {
+//                self.genre = data.genres
+//                //self.getGenre(self.genre, self.movies[0].genreIDS)
+//                self.tableView.reloadData()
+//            } else {
+//              print("Erro inesperado")
+//            }
+//          }
+//    }
     
     func getGenre(_ genres: [Genre], _ movieGenreID: [Int]) -> String {
         var genreName: String?
@@ -154,12 +162,12 @@ extension MovieListTableViewController: UISearchResultsUpdating, UISearchBarDele
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        loadMovies()
-        tableView.reloadData()
+        //loadMovies()
+        //tableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        loadMovies()
-        tableView.reloadData()
+        //loadMovies()
+       // tableView.reloadData()
     }
 }
