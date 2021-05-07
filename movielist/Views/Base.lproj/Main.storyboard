@@ -80,7 +80,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="ivPoster" destination="i9n-ju-ziF" id="XKF-t6-8GF"/>
-                                    <outlet property="lbGender" destination="SoB-fl-ivU" id="TuI-ot-R9Q"/>
+                                    <outlet property="lbGender" destination="MmI-3v-Brx" id="eIY-cR-jXP"/>
                                     <outlet property="lbMovieTitle" destination="vcF-b6-66D" id="kmO-7b-Hww"/>
                                     <outlet property="lbReleaseDate" destination="SoB-fl-ivU" id="tJY-12-prl"/>
                                     <segue destination="MO9-2O-90j" kind="show" id="KCa-vj-Pgs"/>

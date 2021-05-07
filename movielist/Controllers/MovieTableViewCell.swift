@@ -26,9 +26,10 @@ class MovieTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func fillCell(_ movie: Movie) {
+    func fillCell(_ movie: Movie, _ genre: String) {
         lbMovieTitle.text = movie.title
         lbReleaseDate.text = movie.releaseDate
+        lbGender.text = genre
     }
     
     

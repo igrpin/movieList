@@ -10,6 +10,7 @@ import UIKit
 class MovieViewController: UIViewController {
     
     var movie: Movie!
+    var genre: Genre!
     
     @IBOutlet weak var lbMovieTitle: UILabel!
     @IBOutlet weak var ivPoster: UIImageView!
@@ -31,7 +32,7 @@ class MovieViewController: UIViewController {
         tvOverview.text = movie.overview
         lbLanguage.text = movie.originalLanguage
         self.getPosterImage(posterPath: movie.posterPath, imageView: ivPoster)
-        // lbGender
+//        lbGender.text = "\(genre.name)"
     }
     
     
