@@ -26,8 +26,9 @@ class MovieListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nextScreen = segue.destination as! MovieViewController
         let movie = movies[tableView.indexPathForSelectedRow!.row]
-        // let genre = movies[tableView.indexPathForSelectedRow!.row].genreIDS
+        let genreName = getGenre(self.genre, movies[tableView.indexPathForSelectedRow!.row].genreIDS)
         nextScreen.movie = movie
+        nextScreen.genreName = genreName
         
     }
     
@@ -56,7 +57,7 @@ class MovieListTableViewController: UITableViewController {
                 //self.getGenre(self.genre, self.movies[0].genreIDS)
                 self.tableView.reloadData()
             } else {
-              print("Algo deu errado")
+              print("Erro inesperado")
             }
           }
     }
