@@ -9,6 +9,8 @@ import UIKit
 
 class MovieViewController: UIViewController {
     
+    let BASE_IMAGE_URL = "https://image.tmdb.org/t/p/original"
+    
     var movie: Movie!
     var genre: Genre!
     var genreName: String!
@@ -27,29 +29,12 @@ class MovieViewController: UIViewController {
         
     }
     
-    func changeOutlets () {
+    func changeOutlets() {
         lbMovieTitle.text = movie.title
         lbReleaseDate.text = DateConfig().dateFormat(date: movie.releaseDate)
         tvOverview.text = movie.overview
         lbLanguage.text = movie.originalLanguage
         lbGender.text = genreName
-        self.getPosterImage(posterPath: movie.posterPath, imageView: ivPoster)
+        ivPoster.kf.setImage(with: URL(string: BASE_IMAGE_URL+movie.posterPath))
     }
-    
-    
-    /* Referência:
-    https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
-    */
-    func getPosterImage(posterPath url: String, imageView iv: UIImageView) {
-        let baseURL = "https://image.tmdb.org/t/p/original"
-        let url = URL(string: baseURL+url)
-
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url!)
-            DispatchQueue.main.async {
-                iv.image = UIImage(data: data!)
-            }
-        }
-    }
-
 }

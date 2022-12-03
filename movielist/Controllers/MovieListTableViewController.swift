@@ -23,13 +23,14 @@ class MovieListTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        TmdbAPI.loadMovies { (movies) in
-            self.movies = movies
-            self.tableView.reloadData()
+        TmdbAPI.loadGenresIds { [weak self] (genres) in
+            guard let self = self else { return }
+            self.genre = genres
         }
         
-        TmdbAPI.loadGenresIds { (genres) in
-            self.genre = genres
+        TmdbAPI.loadMovies { [weak self] (movies) in
+            guard let self = self else { return }
+            self.movies = movies
             self.tableView.reloadData()
         }
     }
@@ -50,7 +51,6 @@ class MovieListTableViewController: UITableViewController {
             if i.id == movieGenreID[0] {
                 genreName = i.name
             }
-            
         }
         return genreName!
     }
@@ -58,12 +58,10 @@ class MovieListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return movies.count
     }
 
