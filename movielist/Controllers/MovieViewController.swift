@@ -32,8 +32,8 @@ class MovieViewController: UIViewController {
         lbReleaseDate.text = DateConfig().dateFormat(date: movie.releaseDate)
         tvOverview.text = movie.overview
         lbLanguage.text = movie.originalLanguage
-        self.getPosterImage(posterPath: movie.posterPath, imageView: ivPoster)
         lbGender.text = genreName
+        self.getPosterImage(posterPath: movie.posterPath, imageView: ivPoster)
     }
     
     

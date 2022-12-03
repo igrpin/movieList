@@ -1,0 +1,6 @@
+module Pods_movielist {
+  umbrella header "Pods-movielist-umbrella.h"
+
+  export *
+  module * { export * }
+}
