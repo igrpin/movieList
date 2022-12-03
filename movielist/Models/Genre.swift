@@ -8,7 +8,6 @@
 import Foundation
 
 
-
 struct genreArray: Codable {
     let genres: [Genre]
 }

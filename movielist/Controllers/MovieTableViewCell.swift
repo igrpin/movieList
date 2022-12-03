@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieTableViewCell: UITableViewCell {
 
+    let BASE_IMAGE_URL = "https://image.tmdb.org/t/p/original"
+    
     @IBOutlet weak var lbMovieTitle: UILabel!
     @IBOutlet weak var lbReleaseDate: UILabel!
     @IBOutlet weak var lbGender: UILabel!
@@ -30,21 +33,6 @@ class MovieTableViewCell: UITableViewCell {
         lbMovieTitle.text = movie.title
         lbReleaseDate.text = DateConfig().dateFormat(date: movie.releaseDate)
         lbGender.text = genre
-        self.getPosterImage(posterPath: movie.posterPath, imageView: ivPoster)
-        
-        
+        ivPoster.kf.setImage(with: URL(string: BASE_IMAGE_URL+movie.posterPath))
     }
-    
-    func getPosterImage(posterPath url: String, imageView iv: UIImageView) {
-        let baseURL = "https://image.tmdb.org/t/p/original"
-        let url = URL(string: baseURL+url)
-
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url!)
-            DispatchQueue.main.async {
-                iv.image = UIImage(data: data!)
-            }
-        }
-    }
-    
 }
