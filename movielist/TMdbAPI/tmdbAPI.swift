@@ -17,7 +17,7 @@ class TmdbAPI {
         DispatchQueue.main.async {
             guard let url = URL(string: urlPrincipal),
                   let JSONdata = try? Data(contentsOf: url) else { return }
-            if let data = try? JSONDecoder().decode(results.self, from: JSONdata) {
+            if let data = try? JSONDecoder().decode(APICallResult.self, from: JSONdata) {
                 let movies = data.movies
                 completion(movies)
             } else {

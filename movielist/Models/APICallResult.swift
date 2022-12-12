@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct results: Codable {
+struct APICallResult: Codable {
     let movies: [Movie]
     
     enum CodingKeys: String, CodingKey {
