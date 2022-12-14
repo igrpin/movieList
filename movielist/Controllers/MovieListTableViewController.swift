@@ -28,7 +28,7 @@ class MovieListTableViewController: UITableViewController {
             self.genre = genres
         }
         
-        TmdbAPI.loadMovies { [weak self] (movies) in
+        TmdbAPI.loadMoviesNowPlaying { [weak self] (movies) in
             guard let self = self else { return }
             self.movies = movies
             self.tableView.reloadData()

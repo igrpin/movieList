@@ -11,9 +11,11 @@ import Foundation
 class TmdbAPI {
     
     private static let apiKey: String = "f321a808e68611f41312aa8408531476"
+    private static let apiURL: String = "https://api.themoviedb.org/3"
+    private static let languagePtBr: String = "&language=pt-BR"
     
-    static func loadMovies(_ completion: @escaping (_ movies: [Movie]) -> ()) {
-        let urlPrincipal = "https://api.themoviedb.org/3/movie/now_playing?api_key=" + self.apiKey
+    static func loadMoviesNowPlaying(_ completion: @escaping (_ movies: [Movie]) -> ()) {
+        let urlPrincipal = "\(apiURL)/movie/now_playing?api_key=" + apiKey
         DispatchQueue.main.async {
             guard let url = URL(string: urlPrincipal),
                   let JSONdata = try? Data(contentsOf: url) else { return }
@@ -27,7 +29,7 @@ class TmdbAPI {
     }
 
     static func loadGenresIds(_ completion: @escaping (_ genres: [Genre]) -> ()) {
-        let urlPrincipal = "https://api.themoviedb.org/3/genre/movie/list?api_key=" + self.apiKey + "&language=pt-BR"
+        let urlPrincipal = "\(apiURL)/genre/movie/list?api_key=" + apiKey + languagePtBr
         DispatchQueue.main.async {
             guard let url = URL(string: urlPrincipal),
                   let JSONdata = try? Data(contentsOf: url) else { return }
