@@ -27,9 +27,14 @@ class DefaultTableViewController: UITableViewController {
         return movies.count // set to value needed
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath) as! MovieListTableViewCell
-        cell.textLabel?.text = "\(movies[indexPath.row].title)"
+        cell.configCell(movies[indexPath.row])
+        view.addSubview(cell)
         return cell
     }
 }
