@@ -21,6 +21,8 @@ class TmdbAPI {
                   let JSONdata = try? Data(contentsOf: url) else { return }
             if let data = try? JSONDecoder().decode(APICallResult.self, from: JSONdata) {
                 let movies = data.movies
+                print("Número de páginas: \(data.totalPages)")
+                print("Número de resultados: \(data.totalResults)")
                 completion(movies)
             } else {
                 print("Algo deu errado")
