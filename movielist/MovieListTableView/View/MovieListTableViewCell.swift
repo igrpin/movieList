@@ -45,8 +45,6 @@ class MovieListTableViewCell: UITableViewCell {
         
         setIvPosterConstraints()
         setMovieTitleVerticalStackViewConstraints()
-//        setMovieTitleHorizontalStackViewConstraints()
-//        setLbReleaseDateConstraints()
         setLbMovieTitleConstraints()
     }
     
@@ -56,7 +54,6 @@ class MovieListTableViewCell: UITableViewCell {
         movieTitleVerticalStackView.alignment = UIStackView.Alignment.leading
         movieTitleVerticalStackView.spacing   = 8.0
         movieTitleVerticalStackView.backgroundColor = .clear
-        
         movieTitleVerticalStackView.translatesAutoresizingMaskIntoConstraints = false
         
         movieTitleVerticalStackView.addArrangedSubview(lbMovieTitle)
@@ -69,7 +66,6 @@ class MovieListTableViewCell: UITableViewCell {
         movieTitleVerticalStackView.leadingAnchor.constraint(equalTo: ivPoster.trailingAnchor, constant: 5).isActive = true
         movieTitleVerticalStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         movieTitleVerticalStackView.topAnchor.constraint(equalTo: ivPoster.topAnchor).isActive = true
-//        movieTitleStackView.leadingAnchor.constraint(equalTo: ivPoster.trailingAnchor, constant: 5).isActive = true
     }
     
     func configMovieTitleHorizontalStackView() {
@@ -81,30 +77,20 @@ class MovieListTableViewCell: UITableViewCell {
         movieTitleHorizontalStackView.addArrangedSubview(lbReleaseDatePlaceHolder)
         movieTitleHorizontalStackView.addArrangedSubview(lbReleaseDate)
         
-        movieTitleHorizontalStackView.addArrangedSubview(lbPopularityPlaceholder)
-        movieTitleHorizontalStackView.addArrangedSubview(lbPopularity)
-        
-//        contentView.addSubview(movieTitleHorizontalStackView)
+//        movieTitleHorizontalStackView.addArrangedSubview(lbPopularityPlaceholder)
+//        movieTitleHorizontalStackView.addArrangedSubview(lbPopularity)
     }
-    
-//    func setMovieTitleHorizontalStackViewConstraints() {
-//        movieTitleVerticalStackView.leadingAnchor.constraint(equalTo: movieTitleVerticalStackView.leadingAnchor, constant: 5).isActive = true
-//        movieTitleStackView.leadingAnchor.constraint(equalTo: ivPoster.trailingAnchor, constant: 5).isActive = true
-//    }
     
     func configLbMovieTitle(_ movie: Movie) {
         lbMovieTitle.frame = .zero
-        
         lbMovieTitle.text = movie.title
         lbMovieTitle.textColor = .label
         lbMovieTitle.font = .systemFont(ofSize: 18)
         lbMovieTitle.lineBreakMode = .byWordWrapping
         lbMovieTitle.numberOfLines = 0
+        lbMovieTitle.clipsToBounds = true
         lbMovieTitle.adjustsFontSizeToFitWidth = true
-        
-        lbMovieTitle.layer.cornerRadius = 0
         lbMovieTitle.layer.masksToBounds = false
-        
         lbMovieTitle.backgroundColor = .clear
     }
     
@@ -117,48 +103,34 @@ class MovieListTableViewCell: UITableViewCell {
     func configLbReleaseDate(_ movie: Movie) {
         lbReleaseDate.frame = .zero
         lbReleaseDate.text = DateConfig().dateFormat(date: movie.releaseDate)
-        lbReleaseDate.text = DateConfig().dateFormat(date: movie.releaseDate)
-        lbReleaseDate.textAlignment = .left
-        lbReleaseDate.textColor = .black
+        lbReleaseDate.textColor = .secondaryLabel
+        lbReleaseDate.font = lbReleaseDate.font.withSize(12)
         lbReleaseDate.lineBreakMode = .byClipping
+        lbReleaseDate.textAlignment = .left
+        lbMovieTitle.clipsToBounds = true
         lbReleaseDate.adjustsFontSizeToFitWidth = true
         lbReleaseDate.layer.masksToBounds = true
         lbReleaseDate.backgroundColor = .clear
-        lbReleaseDate.font = lbReleaseDate.font.withSize(12)
-//        contentView.addSubview(lbReleaseDate)
+    }
         
-    }
-    
-    func setLbReleaseDateConstraints() {
-        lbReleaseDate.translatesAutoresizingMaskIntoConstraints = false
-        lbReleaseDate.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        lbReleaseDate.heightAnchor.constraint(equalTo: contentView.heightAnchor).isActive = true
-    }
-    
     func configLbReleaseDatePlaceholder() {
         lbReleaseDatePlaceHolder.frame = .zero
         lbReleaseDatePlaceHolder.text = "Release"
-        lbReleaseDatePlaceHolder.textColor = .black
+        lbReleaseDatePlaceHolder.textColor = .secondaryLabel
         lbReleaseDatePlaceHolder.font = lbReleaseDate.font
         lbReleaseDatePlaceHolder.lineBreakMode = .byClipping
         lbReleaseDatePlaceHolder.adjustsFontSizeToFitWidth = true
-        
-        lbReleaseDatePlaceHolder.layer.cornerRadius = 0
         lbReleaseDatePlaceHolder.layer.masksToBounds = false
-        
         lbReleaseDatePlaceHolder.backgroundColor = .clear
     }
     
     func configLbPopularity(_ movie: Movie) {
         lbPopularity.frame = .zero
-        
         lbPopularity.text = String(movie.popularity)
         lbPopularity.textColor = .label
         lbPopularity.font = .systemFont(ofSize: 12)
         lbPopularity.adjustsFontSizeToFitWidth = true
-        
         lbPopularity.layer.masksToBounds = false
-        
         lbPopularity.backgroundColor = .clear
     }
     
@@ -168,9 +140,7 @@ class MovieListTableViewCell: UITableViewCell {
         lbPopularityPlaceholder.textColor = .black
         lbPopularityPlaceholder.font = lbPopularity.font
         lbPopularityPlaceholder.adjustsFontSizeToFitWidth = true
-        
         lbPopularityPlaceholder.layer.masksToBounds = false
-        
         lbPopularityPlaceholder.backgroundColor = .clear
     }
     
