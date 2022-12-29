@@ -8,10 +8,12 @@
 import UIKit
 
 class DefaultTableViewController: UITableViewController {
-    
+        
     var movies = [Movie]()
     
     override func viewDidLoad() {
+        self.title = "Movie List"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         tableView.register(MovieListTableViewCell.self, forCellReuseIdentifier: "defaultCell")
     }
     
