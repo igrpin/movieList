@@ -14,18 +14,18 @@ class TmdbAPI {
     private static let apiURL: String = "https://api.themoviedb.org/3"
     private static let languagePtBr: String = "&language=pt-BR"
     
-    static func loadMoviesNowPlaying(_ completion: @escaping (_ movies: [Movie]) -> ()) {
-        let urlPrincipal = "\(apiURL)/movie/now_playing?api_key=" + apiKey
+    static func loadMoviesNowPlaying(_ page: Int = 1, _ completion: @escaping (Result<APICallResult, Error>) -> Void) {
+        let urlPrincipal = "\(apiURL)/movie/now_playing?api_key=" + apiKey + "&page=\(page)"
         DispatchQueue.main.async {
             guard let url = URL(string: urlPrincipal),
-                  let JSONdata = try? Data(contentsOf: url) else { return }
+            let JSONdata = try? Data(contentsOf: url) else { return }
             if let data = try? JSONDecoder().decode(APICallResult.self, from: JSONdata) {
-                let movies = data.movies
                 print("Número de páginas: \(data.totalPages)")
+                print("Página atual: \(data.page)")
                 print("Número de resultados: \(data.totalResults)")
-                completion(movies)
+                completion(.success(data))
             } else {
-                print("Algo deu errado")
+                print("Something went wrong")
             }
         }
     }
