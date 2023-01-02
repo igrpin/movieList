@@ -125,9 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				14AE62052947CD9600C52902 /* MovieListTableView */,
-				143121FA2641FF7700F86A9C /* Model */,
-				143121F72641F93400F86A9C /* View */,
-				143121FD264204AD00F86A9C /* Controller */,
+				14C7A7A12963222B0098226D /* Old */,
 				14E642B12645741D00FF37C3 /* TMdbAPI */,
 				144D7C9D29549FDE00A546A6 /* Utils */,
 				143121CF2641F62F00F86A9C /* Assets.xcassets */,
@@ -168,7 +166,6 @@
 		143121FA2641FF7700F86A9C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				143121FB2641FF8D00F86A9C /* Movie.swift */,
 				1431220026420CD900F86A9C /* APICallResult.swift */,
 				14BA8A4026445C07007BD163 /* Genre.swift */,
 			);
@@ -196,6 +193,7 @@
 		14AE62052947CD9600C52902 /* MovieListTableView */ = {
 			isa = PBXGroup;
 			children = (
+				14C7A7A0296320CD0098226D /* Model */,
 				14AE62062947CDB200C52902 /* View */,
 				14AE62072947CDBD00C52902 /* Controller */,
 			);
@@ -218,9 +216,27 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		14C7A7A0296320CD0098226D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				143121FB2641FF8D00F86A9C /* Movie.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		14C7A7A12963222B0098226D /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				143121F72641F93400F86A9C /* View */,
+				143121FD264204AD00F86A9C /* Controller */,
+			);
+			path = Old;
+			sourceTree = "<group>";
+		};
 		14E642B12645741D00FF37C3 /* TMdbAPI */ = {
 			isa = PBXGroup;
 			children = (
+				143121FA2641FF7700F86A9C /* Model */,
 				143121F82641F9F300F86A9C /* tmdbAPI.swift */,
 			);
 			path = TMdbAPI;
@@ -591,7 +607,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JBR7HLAVUQ;
 				INFOPLIST_FILE = movielist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -614,7 +630,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JBR7HLAVUQ;
 				INFOPLIST_FILE = movielist/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
