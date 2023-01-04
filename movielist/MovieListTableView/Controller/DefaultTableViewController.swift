@@ -11,25 +11,31 @@ class DefaultTableViewController: UITableViewController {
         
     var movies = [Movie]()
     var currentPage: Int = 1
+    let network = CheckInternetConnection.shared
     
     override func viewDidLoad() {
         self.title = "Movie List"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         tableView.register(MovieListTableViewCell.self, forCellReuseIdentifier: "defaultCell")
         tableView.delegate = self
+        self.navigationController?.pushViewController(NoConnectionMessageViewController(), animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        TmdbAPI.loadMoviesNowPlaying(currentPage, { [weak self] (data) in
-            guard let self = self else { return }
-            switch data {
-            case .success(let data):
-                self.movies = data.movies
-                self.tableView.reloadData()
-            case .failure(_):
-                print("Failed getting data from API")
-            }
-        })
+        if network.startMonitoring() {
+            TmdbAPI.loadMoviesNowPlaying(currentPage, { [weak self] (data) in
+                guard let self = self else { return }
+                switch data {
+                case .success(let data):
+                    self.movies = data.movies
+                    self.tableView.reloadData()
+                case .failure(_):
+                    print("Failed getting data from API")
+                }
+            })
+        } else {
+//            self.navigationController?.pushViewController(NoConnectionMessageViewController(), animated: true)
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

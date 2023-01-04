@@ -1,6 +1,9 @@
-platform :ios, '15'
+platform :ios, '10.0'
 
 target 'movielist' do
     pod 'Kingfisher'
-    pod 'Alamofire'
+
+  target 'movielistTests' do
+    inherit! :search_paths
+  end
 end 
