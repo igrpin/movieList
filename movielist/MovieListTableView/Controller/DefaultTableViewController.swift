@@ -11,25 +11,18 @@ class DefaultTableViewController: UITableViewController {
         
     var movies = [Movie]()
     var currentPage: Int = 1
+    let network = CheckInternetConnection.shared
     
     override func viewDidLoad() {
         self.title = "Movie List"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         tableView.register(MovieListTableViewCell.self, forCellReuseIdentifier: "defaultCell")
         tableView.delegate = self
+        network.startMonitoring()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        TmdbAPI.loadMoviesNowPlaying(currentPage, { [weak self] (data) in
-            guard let self = self else { return }
-            switch data {
-            case .success(let data):
-                self.movies = data.movies
-                self.tableView.reloadData()
-            case .failure(_):
-                print("Failed getting data from API")
-            }
-        })
+        validateNetworkAndFetchData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,21 +52,36 @@ class DefaultTableViewController: UITableViewController {
 
     private func executeActionAtTheEnd(of scrollView: UIScrollView) {
         if scrollView.contentOffset.y + 1 >= (scrollView.contentSize.height - scrollView.frame.size.height) {
-            self.currentPage += 1
-            TmdbAPI.loadMoviesNowPlaying(self.currentPage, { [weak self] (data) in
-                guard let self = self else { return }
-                switch data {
-                case .success(let data):
-                    if (self.currentPage <= data.page) {
-                        self.movies.append(contentsOf: data.movies)
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    }
-                case .failure(_):
-                    print("Failed getting data from API")
-                }
-            })
+            validateNetworkAndFetchData()
         }
+    }
+    
+    private func validateNetworkAndFetchData() {
+        if network.isConnected {
+            fetchData()
+        } else {
+            network.stopMonitoring()
+            self.navigationController?.pushViewController(NoConnectionMessageViewController(), animated: true)
+        }
+    }
+    
+    private func fetchData() {
+        TmdbAPI.loadMoviesNowPlaying(self.currentPage, { [weak self] (data) in
+            guard let self = self else { return }
+            switch data {
+            case .success(let data):
+                if (self.currentPage <= 1) {
+                    self.movies = data.movies
+                } else {
+                    self.movies.append(contentsOf: data.movies)
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(_):
+                print("Failed getting data from API")
+            }
+        })
+        self.currentPage += 1
     }
 }
