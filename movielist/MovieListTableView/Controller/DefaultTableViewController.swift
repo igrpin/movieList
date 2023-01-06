@@ -60,7 +60,6 @@ class DefaultTableViewController: UITableViewController {
         if network.isConnected {
             fetchData()
         } else {
-            network.stopMonitoring()
             self.navigationController?.pushViewController(NoConnectionMessageViewController(), animated: true)
         }
     }
