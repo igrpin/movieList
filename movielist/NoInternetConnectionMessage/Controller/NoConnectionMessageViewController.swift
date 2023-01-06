@@ -14,8 +14,8 @@ class NoConnectionMessageViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.clipsToBounds = true
-//        noConnectionMessageView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
-//        view.translatesAutoresizingMaskIntoConstraints = false
+        noConnectionMessageView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+
         view.addSubview(noConnectionMessageView)
 
         noConnectionMessageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true

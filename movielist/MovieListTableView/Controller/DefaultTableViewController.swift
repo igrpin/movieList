@@ -34,6 +34,7 @@ class DefaultTableViewController: UITableViewController {
                 }
             })
         } else {
+            network.stopMonitoring()
 //            self.navigationController?.pushViewController(NoConnectionMessageViewController(), animated: true)
         }
     }
