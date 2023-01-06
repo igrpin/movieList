@@ -12,7 +12,7 @@ import Kingfisher
 
 class NoInternetConnectionMessageView: UIView {
     
-    private lazy var btRetry: UIButton = {
+    public lazy var btRetry: UIButton = {
         let btRetry = UIButton()
         btRetry.frame = CGRect(x: 0, y: 0, width: 350, height: 200)
         btRetry.setTitle("Retry", for: .normal)

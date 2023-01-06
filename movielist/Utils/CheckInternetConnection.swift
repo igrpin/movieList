@@ -14,24 +14,25 @@ class CheckInternetConnection {
     let monitor = NWPathMonitor()
     private var status: NWPath.Status = .requiresConnection
     var isReachableOnCellular: Bool = true
+    public var isConnected: Bool = false
 
     private init() {}
     
-    func startMonitoring() -> Bool {
+    func startMonitoring() {
         monitor.pathUpdateHandler = { [weak self] path in
             self?.status = path.status
             self?.isReachableOnCellular = path.isExpensive
 
             if path.status == .satisfied {
                 print("Connected!")
+                self?.isConnected = true
             } else {
                 print("No connection!")
             }
         }
-
         let queue = DispatchQueue(label: "CheckInternetConnection")
         monitor.start(queue: queue)
-        return status == .satisfied
+        
     }
 
     func stopMonitoring() {

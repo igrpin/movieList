@@ -12,7 +12,6 @@
 		143121CE2641F62C00F86A9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 143121CC2641F62C00F86A9C /* Main.storyboard */; };
 		143121D02641F62F00F86A9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 143121CF2641F62F00F86A9C /* Assets.xcassets */; };
 		143121D32641F62F00F86A9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 143121D12641F62F00F86A9C /* LaunchScreen.storyboard */; };
-		143121E92641F63000F86A9C /* movielistUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143121E82641F63000F86A9C /* movielistUITests.swift */; };
 		143121F92641F9F300F86A9C /* tmdbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143121F82641F9F300F86A9C /* tmdbAPI.swift */; };
 		143121FC2641FF8D00F86A9C /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143121FB2641FF8D00F86A9C /* Movie.swift */; };
 		143121FF264204D900F86A9C /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143121FE264204D900F86A9C /* MovieViewController.swift */; };
@@ -60,8 +59,6 @@
 		143121D92641F63000F86A9C /* movielistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = movielistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		143121DF2641F63000F86A9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		143121E42641F63000F86A9C /* movielistUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = movielistUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		143121E82641F63000F86A9C /* movielistUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movielistUITests.swift; sourceTree = "<group>"; };
-		143121EA2641F63000F86A9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		143121F82641F9F300F86A9C /* tmdbAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tmdbAPI.swift; sourceTree = "<group>"; };
 		143121FB2641FF8D00F86A9C /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		143121FE264204D900F86A9C /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
@@ -126,7 +123,6 @@
 			children = (
 				143121C52641F62C00F86A9C /* movielist */,
 				143121DC2641F63000F86A9C /* movielistTests */,
-				143121E72641F63000F86A9C /* movielistUITests */,
 				143121C42641F62C00F86A9C /* Products */,
 				35121E69B76E20E4C53E399C /* Pods */,
 				03166DCC8133C3B6286589A8 /* Frameworks */,
@@ -166,15 +162,6 @@
 				1445F6742965BA47001B136B /* CheckInternetConnectionTests.swift */,
 			);
 			path = movielistTests;
-			sourceTree = "<group>";
-		};
-		143121E72641F63000F86A9C /* movielistUITests */ = {
-			isa = PBXGroup;
-			children = (
-				143121E82641F63000F86A9C /* movielistUITests.swift */,
-				143121EA2641F63000F86A9C /* Info.plist */,
-			);
-			path = movielistUITests;
 			sourceTree = "<group>";
 		};
 		143121F72641F93400F86A9C /* View */ = {
@@ -512,7 +499,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				143121E92641F63000F86A9C /* movielistUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
