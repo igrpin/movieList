@@ -10,20 +10,30 @@ import UIKit
 class MovieDetailViewController: UIViewController {
     
     var movie: Movie?
-    let myView = MovieDetailView(frame: .zero)
+    let movieDetailView = MovieDetailView(frame: .zero)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(movie ?? "No data")
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(myView)
+        view.backgroundColor = .lightGray
+        view.clipsToBounds = true
+        view.addSubview(movieDetailView)
         
-        myView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
-        myView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        myView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        myView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        myView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        print(view.frame.size.height)
+
+        movieDetailView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        movieDetailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        movieDetailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        movieDetailView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        movieDetailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+        configView()
     }
-    //(82) 99634-8218 - Julius
+    
+    func configView(){
+        if let movie = self.movie {
+            movieDetailView.configView(movie)
+        }
+    }
 }

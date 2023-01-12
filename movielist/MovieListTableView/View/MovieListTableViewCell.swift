@@ -75,9 +75,6 @@ class MovieListTableViewCell: UITableViewCell {
         
         movieTitleHorizontalStackView.addArrangedSubview(lbReleaseDatePlaceHolder)
         movieTitleHorizontalStackView.addArrangedSubview(lbReleaseDate)
-        
-//        movieTitleHorizontalStackView.addArrangedSubview(lbPopularityPlaceholder)
-//        movieTitleHorizontalStackView.addArrangedSubview(lbPopularity)
     }
     
     func configLbMovieTitle(_ movie: Movie) {
@@ -144,7 +141,7 @@ class MovieListTableViewCell: UITableViewCell {
     }
     
     func configIvPoster(_ movie: Movie) {
-        ivPoster.kf.setImage(with: URL(string: BASE_IMAGE_URL+movie.posterPath))
+        ivPoster.kf.setImage(with: URL(string: TmdbEndpoints.BASE_IMAGE_URL+movie.posterPath))
         ivPoster.contentMode = .scaleAspectFit
         ivPoster.frame = .zero
         ivPoster.sizeToFit()
