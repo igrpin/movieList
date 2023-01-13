@@ -16,22 +16,20 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(movie ?? "No data")
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .white
         view.clipsToBounds = true
         view.addSubview(movieDetailView)
-        
-        print(view.frame.size.height)
-
-        movieDetailView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
-        movieDetailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        movieDetailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        movieDetailView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        movieDetailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         configView()
     }
     
     func configView(){
+        movieDetailView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        movieDetailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        movieDetailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        movieDetailView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        movieDetailView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
         if let movie = self.movie {
             movieDetailView.configView(movie)
         }
