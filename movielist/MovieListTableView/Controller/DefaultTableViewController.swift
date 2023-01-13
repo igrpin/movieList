@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DefaultTableViewController: UITableViewController {
+class DefaultTableViewController: UITableViewController, UINavigationControllerDelegate ,UIGestureRecognizerDelegate {
         
     var movies = [Movie]()
     var currentPage: Int = 1
@@ -16,12 +16,9 @@ class DefaultTableViewController: UITableViewController {
     override func viewDidLoad() {
         self.title = "Movie List"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         tableView.register(MovieListTableViewCell.self, forCellReuseIdentifier: "defaultCell")
         tableView.delegate = self
-        network.startMonitoring()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         validateNetworkAndFetchData()
     }
     
@@ -36,8 +33,24 @@ class DefaultTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath) as! MovieListTableViewCell
         cell.configCell(movies[indexPath.row])
+        cell.accessoryType = .disclosureIndicator
         view.addSubview(cell)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cellDetailViewController = MovieDetailViewController()
+        cellDetailViewController.movie = movies[tableView.indexPathForSelectedRow!.row]
+        navigationController?.pushViewController(cellDetailViewController, animated: true)
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        let enable = self.navigationController?.viewControllers.count ?? 0 > 1
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = enable
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

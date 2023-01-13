@@ -23,7 +23,7 @@ class CheckInternetConnectionTests: XCTestCase {
         // Arrange
         let sut = CheckInternetConnection.shared
         // Act
-        let isConnected = sut.startMonitoring()
+        let isConnected = sut.isConnected
         // Assert
         XCTAssertTrue(isConnected, "startMonitoring() should have returned TRUE - No internet connection")
     }

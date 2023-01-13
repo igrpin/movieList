@@ -22,13 +22,15 @@ class CheckInternetConnection {
         monitor.pathUpdateHandler = { [weak self] path in
             self?.status = path.status
             self?.isReachableOnCellular = path.isExpensive
-
+            self?.isConnected = path.status == .satisfied
+            
             if path.status == .satisfied {
                 print("Connected!")
-                self?.isConnected = true
+                
             } else {
                 print("No connection!")
             }
+            
         }
         let queue = DispatchQueue(label: "CheckInternetConnection")
         monitor.start(queue: queue)
