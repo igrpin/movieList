@@ -12,10 +12,10 @@ class MovieListTableViewCell: UITableViewCell {
     private lazy var movieTitleVerticalStackView = UIStackView()
     private lazy var movieTitleHorizontalStackView = UIStackView()
     private lazy var lbMovieTitle = UILabel()
-    private lazy var lbReleaseDate = UILabel()
+    private lazy var lbVoteAverage = UILabel()
     private lazy var lbPopularity = UILabel()
     private lazy var lbPopularityPlaceholder = UILabel()
-    private lazy var lbReleaseDatePlaceHolder = UILabel()
+    private lazy var lbVoteAveragePlaceHolder = UILabel()
     private lazy var lbGender = UILabel()
     private lazy var ivPoster = UIImageView()
     
@@ -28,15 +28,14 @@ class MovieListTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
     func configCell(_ movie: Movie) {
         configIvPoster(movie)
-        configLbReleaseDate(movie)
+        configLbVoteAverage(movie)
         configLbMovieTitle(movie)
-        configLbReleaseDatePlaceholder()
+        configLbVoteAveragePlaceholder()
         configLbPopularity(movie)
         configLbPopularityPlaceholder()
         
@@ -74,11 +73,8 @@ class MovieListTableViewCell: UITableViewCell {
         movieTitleHorizontalStackView.alignment = UIStackView.Alignment.leading
         movieTitleHorizontalStackView.spacing   = 2.0
         
-        movieTitleHorizontalStackView.addArrangedSubview(lbReleaseDatePlaceHolder)
-        movieTitleHorizontalStackView.addArrangedSubview(lbReleaseDate)
-        
-//        movieTitleHorizontalStackView.addArrangedSubview(lbPopularityPlaceholder)
-//        movieTitleHorizontalStackView.addArrangedSubview(lbPopularity)
+        movieTitleHorizontalStackView.addArrangedSubview(lbVoteAveragePlaceHolder)
+        movieTitleHorizontalStackView.addArrangedSubview(lbVoteAverage)
     }
     
     func configLbMovieTitle(_ movie: Movie) {
@@ -100,28 +96,27 @@ class MovieListTableViewCell: UITableViewCell {
         lbMovieTitle.widthAnchor.constraint(equalTo: movieTitleVerticalStackView.widthAnchor).isActive = true
     }
     
-    func configLbReleaseDate(_ movie: Movie) {
-        lbReleaseDate.frame = .zero
-        lbReleaseDate.text = DateConfig().dateFormat(date: movie.releaseDate)
-        lbReleaseDate.textColor = .secondaryLabel
-        lbReleaseDate.font = lbReleaseDate.font.withSize(12)
-        lbReleaseDate.lineBreakMode = .byClipping
-        lbReleaseDate.textAlignment = .left
-        lbMovieTitle.clipsToBounds = true
-        lbReleaseDate.adjustsFontSizeToFitWidth = true
-        lbReleaseDate.layer.masksToBounds = true
-        lbReleaseDate.backgroundColor = .clear
+    func configLbVoteAverage(_ movie: Movie) {
+        lbVoteAverage.frame = .zero
+        lbVoteAverage.text = String(movie.voteAverage)
+        lbVoteAverage.textColor = .secondaryLabel
+        lbVoteAverage.font = lbVoteAverage.font.withSize(12)
+        lbVoteAverage.lineBreakMode = .byClipping
+        lbVoteAverage.textAlignment = .left
+        lbVoteAverage.adjustsFontSizeToFitWidth = true
+        lbVoteAverage.layer.masksToBounds = true
+        lbVoteAverage.backgroundColor = .clear
     }
         
-    func configLbReleaseDatePlaceholder() {
-        lbReleaseDatePlaceHolder.frame = .zero
-        lbReleaseDatePlaceHolder.text = "Release"
-        lbReleaseDatePlaceHolder.textColor = .secondaryLabel
-        lbReleaseDatePlaceHolder.font = lbReleaseDate.font
-        lbReleaseDatePlaceHolder.lineBreakMode = .byClipping
-        lbReleaseDatePlaceHolder.adjustsFontSizeToFitWidth = true
-        lbReleaseDatePlaceHolder.layer.masksToBounds = false
-        lbReleaseDatePlaceHolder.backgroundColor = .clear
+    func configLbVoteAveragePlaceholder() {
+        lbVoteAveragePlaceHolder.frame = .zero
+        lbVoteAveragePlaceHolder.text = "Vote average"
+        lbVoteAveragePlaceHolder.textColor = .secondaryLabel
+        lbVoteAveragePlaceHolder.font = lbVoteAverage.font
+        lbVoteAveragePlaceHolder.lineBreakMode = .byClipping
+        lbVoteAveragePlaceHolder.adjustsFontSizeToFitWidth = true
+        lbVoteAveragePlaceHolder.layer.masksToBounds = false
+        lbVoteAveragePlaceHolder.backgroundColor = .clear
     }
     
     func configLbPopularity(_ movie: Movie) {
@@ -145,7 +140,7 @@ class MovieListTableViewCell: UITableViewCell {
     }
     
     func configIvPoster(_ movie: Movie) {
-        ivPoster.kf.setImage(with: URL(string: BASE_IMAGE_URL+movie.posterPath))
+        ivPoster.kf.setImage(with: URL(string: TmdbEndpoints.BASE_IMAGE_URL+movie.posterPath))
         ivPoster.contentMode = .scaleAspectFit
         ivPoster.frame = .zero
         ivPoster.sizeToFit()

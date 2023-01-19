@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let mainViewController = DefaultTableViewController()
+        let mainViewController = RootTableViewController()
         let navigationController = UINavigationController(rootViewController: mainViewController)
         
         navigationController.viewControllers = [mainViewController]
