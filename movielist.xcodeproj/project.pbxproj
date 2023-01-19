@@ -22,7 +22,7 @@
 		1445F6792965C04C001B136B /* NoInternetConnectionMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445F6782965C04C001B136B /* NoInternetConnectionMessageView.swift */; };
 		14908810264226DA00D34C28 /* MovieListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1490880F264226DA00D34C28 /* MovieListTableViewController.swift */; };
 		14AE62032947CC7F00C52902 /* MovieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AE62012947CC7E00C52902 /* MovieListTableViewCell.swift */; };
-		14AE62092947FFB000C52902 /* DefaultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AE62082947FFB000C52902 /* DefaultTableViewController.swift */; };
+		14AE62092947FFB000C52902 /* RootTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AE62082947FFB000C52902 /* RootTableViewController.swift */; };
 		14AE6DE3297058BB004187EC /* CheckInternetConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1445F6742965BA47001B136B /* CheckInternetConnectionTests.swift */; };
 		14AE6DE5297089F8004187EC /* TmdbEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AE6DE4297089F8004187EC /* TmdbEndpoints.swift */; };
 		14BA8A4126445C07007BD163 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BA8A4026445C07007BD163 /* Genre.swift */; };
@@ -64,7 +64,7 @@
 		146963482964C51700147A24 /* libKingfisher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libKingfisher.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1490880F264226DA00D34C28 /* MovieListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewController.swift; sourceTree = "<group>"; };
 		14AE62012947CC7E00C52902 /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
-		14AE62082947FFB000C52902 /* DefaultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTableViewController.swift; sourceTree = "<group>"; };
+		14AE62082947FFB000C52902 /* RootTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTableViewController.swift; sourceTree = "<group>"; };
 		14AE6DD8297056BF004187EC /* movielistTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = movielistTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14AE6DE4297089F8004187EC /* TmdbEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbEndpoints.swift; sourceTree = "<group>"; };
 		14BA8A4026445C07007BD163 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
@@ -109,13 +109,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		142B56912968B3D8003FAAA8 /* CellDetail */ = {
+		142B56912968B3D8003FAAA8 /* MovieDetail */ = {
 			isa = PBXGroup;
 			children = (
 				142B56952968BF72003FAAA8 /* View */,
 				142B56942968B43E003FAAA8 /* Controller */,
 			);
-			path = CellDetail;
+			path = MovieDetail;
 			sourceTree = "<group>";
 		};
 		142B56942968B43E003FAAA8 /* Controller */ = {
@@ -157,8 +157,8 @@
 		143121C52641F62C00F86A9C /* movielist */ = {
 			isa = PBXGroup;
 			children = (
-				142B56912968B3D8003FAAA8 /* CellDetail */,
 				14AE62052947CD9600C52902 /* MovieListTableView */,
+				142B56912968B3D8003FAAA8 /* MovieDetail */,
 				1445F67A2965C05A001B136B /* NoInternetConnectionMessage */,
 				14C7A7A12963222B0098226D /* Old */,
 				14E642B12645741D00FF37C3 /* TMdbAPI */,
@@ -263,7 +263,7 @@
 		14AE62072947CDBD00C52902 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				14AE62082947FFB000C52902 /* DefaultTableViewController.swift */,
+				14AE62082947FFB000C52902 /* RootTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -469,7 +469,7 @@
 				14AE62032947CC7F00C52902 /* MovieListTableViewCell.swift in Sources */,
 				14E642B0264567E100FF37C3 /* DateConfig.swift in Sources */,
 				142B56932968B404003FAAA8 /* MovieDetailViewController.swift in Sources */,
-				14AE62092947FFB000C52902 /* DefaultTableViewController.swift in Sources */,
+				14AE62092947FFB000C52902 /* RootTableViewController.swift in Sources */,
 				14FDCE3C29632E220008336E /* CheckInternetConnection.swift in Sources */,
 				14DAB393264435E9001AE691 /* MovieTableViewCell.swift in Sources */,
 				143121FF264204D900F86A9C /* MovieViewController.swift in Sources */,

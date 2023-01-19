@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DefaultTableViewController: UITableViewController, UINavigationControllerDelegate ,UIGestureRecognizerDelegate {
+class RootTableViewController: UITableViewController, UINavigationControllerDelegate ,UIGestureRecognizerDelegate {
         
     var movies = [Movie]()
     var currentPage: Int = 1

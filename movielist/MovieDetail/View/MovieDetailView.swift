@@ -17,7 +17,7 @@ class MovieDetailView: UIView {
         scrollView.frame = .zero
         scrollView.backgroundColor = .white
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.contentSize = CGSize(width: self.frame.size.width, height: 900)
+        scrollView.contentSize = CGSize(width: self.frame.size.width, height: self.frame.size.height * 1.5)
         return scrollView
     }()
     
@@ -53,7 +53,7 @@ class MovieDetailView: UIView {
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left
         label.backgroundColor = .clear
-        label.textColor = .secondaryLabel
+        label.textColor = .black
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -89,7 +89,7 @@ class MovieDetailView: UIView {
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .left
         label.sizeToFit()
-        label.textColor = .secondaryLabel
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
